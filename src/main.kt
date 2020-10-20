@@ -115,7 +115,7 @@ fun Lab1_Test(){
     // Compare two matrices (true expected)
     val test = Matrix(4, 3)
     val areEqual = nullMatrix == test
-    println("\nIs nullMatrix equals test? - $areEqual")
+    println("\nIs nullMatrix equals other nullMatrix? - $areEqual")
     
    
 }

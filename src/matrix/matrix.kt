@@ -32,7 +32,9 @@ class Matrix( numberOfRows : Int, numberOfColumns : Int) {
         if (javaClass != other?.javaClass) return false
         
         other as Matrix
-        if (!elements.contentEquals(other.elements)) return false
+        for (i in 0 until rows)
+            for (j in 0 until columns)
+            if (this[i,j] != other[i,j]) return false
         return true
     }
     
@@ -96,7 +98,7 @@ class Matrix( numberOfRows : Int, numberOfColumns : Int) {
     */
     operator fun plus(otherMatrix: Matrix): Matrix {
         if (!this.equalDimension(otherMatrix))
-            throw ArithmeticException("ERR! Matrices must be of the same dimension!")
+            throw ArithmeticException("Error! Matrices must have the same dimension!")
         
         val answer = Matrix(rows, columns)
         
@@ -113,7 +115,7 @@ class Matrix( numberOfRows : Int, numberOfColumns : Int) {
      */
     operator fun minus(otherMatrix: Matrix): Matrix {
         if (!this.equalDimension(otherMatrix))
-            throw ArithmeticException("ERR! Matrices must be of the same dimension!")
+            throw ArithmeticException("Error! Matrices must have the same dimension!")
         
         val answer = Matrix(rows, columns)
         
@@ -157,7 +159,7 @@ class Matrix( numberOfRows : Int, numberOfColumns : Int) {
         
         return answer
     }
-    
+   
     
     //helps to count determinate of matrix
     private fun getSubmatrix(rowToExclude: Int, colToExclude : Int): Matrix{

@@ -27,7 +27,7 @@ import kotlin.math.sqrt
      }
     
      override fun equals(other: Any?): Boolean {
-         if (this == other)
+         if (this === other)
              return true
          if(javaClass != other?.javaClass)
              return false
@@ -40,7 +40,7 @@ import kotlin.math.sqrt
      }
     
      override fun hashCode(): Int {
-         var result = 1;
+         var result = 1
          result = 31 * result + A.hashCode()
          result = 31 * result + B.hashCode()
          return result
@@ -76,7 +76,7 @@ class Circle(radius : Double) :IShape{
     }
     
     override fun equals(other: Any?): Boolean {
-        if (this == other) return true
+        if (this === other) return true
         if(javaClass != other?.javaClass) return false
         
         other as Circle
@@ -86,7 +86,7 @@ class Circle(radius : Double) :IShape{
     }
     
     override fun hashCode(): Int {
-        return R.hashCode();
+        return R.hashCode()
     }
 }
 
@@ -119,8 +119,8 @@ class Triangle(sideA: Double, sideB: Double, sideC: Double) :IShape{
     }
     
     override fun equals(other: Any?): Boolean {
-       if (this == other) return true
-        if(javaClass != this?.javaClass) return false
+       if (this === other) return true
+        if(javaClass != this.javaClass) return false
         
         other as Triangle
         if(A != other.A) return false
