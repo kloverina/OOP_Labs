@@ -50,7 +50,8 @@ fun Lab3_Test(){
     val contact4 = Contact(
             "Сантехник (Иван)",
             "",
-            mutableSetOf(Phone("89058127676", PhoneType.OFFICE))
+            mutableSetOf(Phone("89058127676", PhoneType.OFFICE),
+                    Phone("89067893454", PhoneType.MOBILE))
     )
     //ads new contact to phonebook
     phonebook.addContact(contact4)
@@ -60,7 +61,11 @@ fun Lab3_Test(){
     println("Найденные контакты: \n"+phonebook.find("ик"))
     
     //deletes contact "Евгений Онегин" from the phonebook
-    phonebook.removeContact(0)
+    phonebook.removeContact(2)
+    println("\n$phonebook")
+    
+    //deletes a number from contact
+    phonebook.getContact(2).removePhone("89067893454", PhoneType.MOBILE)
     println("\n$phonebook")
 }
 

@@ -2,14 +2,17 @@ package phonebook
 
 class Contact(var firstName: String, var lastName: String, private var phones: MutableSet<Phone>)
 {
+    //ads a phone number to contact
     fun addPhone( number: String, type: PhoneType): Boolean{
         return phones.add(Phone(number, type))
     }
 
+    //deletes number
     fun removePhone (number: String, type: PhoneType): Boolean{
         return phones.remove(Phone(number, type))
     }
     
+    //returns all numbers in this contact
     fun getAllPhones(): List<Phone>{
         return phones.toList()
     }
