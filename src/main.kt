@@ -2,10 +2,66 @@
 import shapes.*
 import matrix.Matrix
 import kotlin.random.Random
+import phonebook.*
 
 fun main() {
     //Lab2_Test()
-    Lab1_Test()
+   // Lab1_Test()
+    Lab3_Test()
+}
+
+fun Lab3_Test(){
+    val contact1 = Contact(
+            "Радион",
+            "Раскольников",
+            mutableSetOf(Phone("2568976", PhoneType.HOME))
+    )
+    
+    val contact2=Contact(
+            "Аннушка",
+            "",
+            mutableSetOf(Phone("88005553535", PhoneType.MOBILE))
+    )
+    
+    val contact3=Contact(
+            "Евгений",
+            "Онегин",
+            mutableSetOf(Phone("89111186606", PhoneType.MOBILE),
+                         Phone("89001651785", PhoneType.OFFICE))
+    )
+    
+    
+    val phonebook = Phonebook(mutableSetOf(contact1, contact2, contact3))
+    println(phonebook)
+    
+    println("Найденные контакты: \n"+phonebook.find("1111"))
+    
+    val changeContact = phonebook.getContact(1)
+    println("\n$changeContact")
+    changeContact.firstName ="Аннушка (разлила масло)"
+    changeContact.addPhone("3451106", PhoneType.HOME)
+    
+    //show all contact's phone numbers
+    println(changeContact.getAllPhones())
+    
+    //print modified contact
+    println("\n$changeContact")
+    
+    val contact4 = Contact(
+            "Сантехник (Иван)",
+            "",
+            mutableSetOf(Phone("89058127676", PhoneType.OFFICE))
+    )
+    //ads new contact to phonebook
+    phonebook.addContact(contact4)
+    println("\n$phonebook")
+    
+    //finds all contacts with pattern "ик"
+    println("Найденные контакты: \n"+phonebook.find("ик"))
+    
+    //deletes contact "Евгений Онегин" from the phonebook
+    phonebook.removeContact(0)
+    println("\n$phonebook")
 }
 
 fun Lab2_Test(){

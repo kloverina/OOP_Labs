@@ -6,7 +6,7 @@ class Matrix( numberOfRows : Int, numberOfColumns : Int) {
     
     init {
         if (numberOfColumns <= 0 || numberOfRows <= 0)
-            throw IllegalArgumentException("ERROR! Matrix dimensions can not be non-positive.")
+            throw IllegalArgumentException("Error! Matrix dimensions can not be non-positive.")
     }
     
     //creates a matrix and fills it with zeros
@@ -20,7 +20,7 @@ class Matrix( numberOfRows : Int, numberOfColumns : Int) {
         
         for (i in 0 until this.elements.size - 1)
             if (this.elements[i].size != this.elements[i + 1].size)
-                throw IllegalStateException("ERR! All rows in matrix must have equal length.")
+                throw IllegalStateException("Error! All rows in matrix must have equal length.")
         
         for (i in 0 until this.rows)
             for (j in 0 until this.columns)
