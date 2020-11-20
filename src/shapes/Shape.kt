@@ -4,12 +4,16 @@ import kotlin.math.PI
 import kotlin.math.pow
 import kotlin.math.sqrt
 
-/*
-    Represents a simple rectangle for area & perimeter calc
-    @constructor creates a rectangle from 2 different sides: width and height
+/**
+    *Represents a simple rectangle for area & perimeter calc
+   * @constructor creates a rectangle from 2 different sides: width and height
  */
  open class Rectangle(width: Double, height: Double) :IShape {
-     
+    init {
+        if (width<=0 || height<=0)
+            throw IllegalArgumentException("Sides of a figure must be a positive number!")
+    }
+    
      private var A = width
      private var B = height
      
@@ -23,7 +27,7 @@ import kotlin.math.sqrt
     }
 
      override fun toString(): String {
-         return "Rectangle: width = SA, height = $B"
+         return "Rectangle: width = $A, height = $B"
      }
     
      override fun equals(other: Any?): Boolean {
@@ -48,19 +52,28 @@ import kotlin.math.sqrt
 }
 
 
-/*
-    Represents a simple square based on Rectangle class
-    @constructor creates a square from 1 given side
+/**
+   * Represents a simple square based on Rectangle class
+   * @constructor creates a square from 1 given side
 * */
  class Square(side: Double)
      : Rectangle(side, side)
+{
+    private var A = side
+    override fun toString(): String {
+        return "Square: $A"
+    }
+}
 
 
-
-/*
-    Represents a simple circle for area & perimeter calc
-*/
+/**
+  *  Represents a simple circle for area & perimeter calc
+**/
 class Circle(radius : Double) :IShape{
+    init {
+        if (radius<=0)
+            throw IllegalArgumentException("Radius must be a positive number!")
+    }
     private var R = radius
     
     override fun calcArea(): Double {
@@ -90,19 +103,21 @@ class Circle(radius : Double) :IShape{
     }
 }
 
-/*
-    Represents a simple triangle for area & perimeter calc
-    @constructor creates a rectangle from 2 sides
-    throws ArithmeticException when triangle with given sides cannot exists
+/**
+   * Represents a simple triangle for area & perimeter calc
+   * @constructor creates a rectangle from 2 sides
+   * @throws ArithmeticException when triangle with given sides cannot exists
 * */
 class Triangle(sideA: Double, sideB: Double, sideC: Double) :IShape{
-    
     var A = sideA
     var B = sideB
     var C = sideC
     init {
+        if(A<=0 || B<=0 || C<=0)
+            throw IllegalArgumentException("Sides of triangle must be a positive number!")
         if (A + B < C || A + C < B || B + C < A)
             throw ArithmeticException("Triangle with given sides cannot exists!")
+        
     }
     
     override fun calcArea(): Double {
