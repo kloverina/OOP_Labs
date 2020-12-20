@@ -1,23 +1,24 @@
 package shapeAccumulator
 import shapes.IShape
 
-/**
- * @constructor creates [ShapeAccumulator] that contains all [shapes] from some specified collection
- * @throws IllegalArgumentException if collection is empty
-* */
-class ShapeAccumulator<T: IShape> (shapes: Collection<T>){
-    private var shapes: ArrayList<T> = ArrayList()
-    
+
+class ShapeAccumulator<T: IShape> (){
+    private val shapes = mutableListOf<T>()
     /**
     * @constructor that creates
     * [ShapeAccumulator] with specified shape
     * */
-    constructor(shape: T) : this(listOf(shape))
-    
-    init {
-        if(shapes.isEmpty())
+    constructor(_shape: T) : this() {
+        shapes.add(_shape)
+    }
+    /**
+     * @constructor creates [ShapeAccumulator] that contains all [shapes] from some specified collection
+     * @throws IllegalArgumentException if collection is empty
+     * */
+    constructor(_shapes: Collection<T>) :this(){
+        if(_shapes.isEmpty())
             throw IllegalArgumentException("Error! There are no elements in the collection!")
-        this.shapes.addAll(shapes)
+        shapes.addAll(_shapes)
     }
     
     override fun equals(other: Any?): Boolean {
@@ -40,43 +41,38 @@ class ShapeAccumulator<T: IShape> (shapes: Collection<T>){
     }
     
     /** ads one [figure] to [ShapeAccumulator]*/
-    fun add(figure: T){
-        shapes.add(figure)
-    }
+    fun add(figure: T) =  shapes.add(figure)
     
     /** ads all [figures] in the collection to [ShapeAccumulator]*/
-    fun addAll(figures: Collection<T>)
-    {
-        shapes.addAll(figures)
-    }
+    fun addAll(figures: Collection<T>) = shapes.addAll(figures)
     
     /** @return shape with the highest area shape*/
     fun getMaxAreaShape(): T{
-       return shapes.maxBy { iterator -> iterator.calcArea()}!!
+       return shapes.maxBy { it.calcArea()}!!
     }
     
     /** @return shape with the lowest area shape*/
     fun getMinAreaShape(): T{
-        return shapes.minBy { iterator -> iterator.calcArea()}!!
+        return shapes.minBy {  it.calcArea()}!!
     }
     
     /** @return shape with the highest perimeter*/
     fun getMaxPerimeter(): T{
-        return shapes.maxBy { iterator -> iterator.calcPerimeter()}!!
+        return shapes.maxBy { it.calcPerimeter()}!!
     }
     
     /** @return shape with the lowest perimeter*/
     fun getMinPerimeter(): T{
-        return shapes.minBy { iterator -> iterator.calcPerimeter()}!!
+        return shapes.minBy {it.calcPerimeter()}!!
     }
     
     /** @return sum of all area shapes*/
     fun getTotalArea():Double{
-        return shapes.sumByDouble {iterator -> iterator.calcArea()}
+        return shapes.sumByDouble { it.calcArea()}
     }
     
     /** @return sum of all perimeters*/
     fun getTotalPerimeter(): Double{
-        return shapes.sumByDouble { iterator -> iterator.calcPerimeter()}
+        return shapes.sumByDouble { it.calcPerimeter()}
     }
 }

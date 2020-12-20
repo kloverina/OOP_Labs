@@ -1,9 +1,22 @@
 # Created by https://www.toptal.com/developers/gitignore/api/kotlin
 # Edit at https://www.toptal.com/developers/gitignore?templates..
 
+# User specific
+**/.idea/**/workspace.xml
+**/.idea/**/tasks.xml
+**/.idea/shelf/*
+**/.idea/dictionaries
+**/.idea/httpRequests/
+
 ### Kotlin ###
 # Compiled class file
 *.class
+
+# Rider
+# Rider auto-generates .iml files, and contentModel.xml
+**/.idea/**/*.iml
+**/.idea/**/contentModel.xml
+**/.idea/**/modules.xml
 
 # Log file
 *.log

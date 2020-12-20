@@ -21,8 +21,8 @@ fun main(args : Array<String>){
             Rectangle(5.0, 4.0)
     )
   
-    //adding one shape to ShapeAccumulator
-    val shapeAccumulator = ShapeAccumulator<IShape>(rect1)
+    //creating an empty shape accumulator
+    val accumulator = ShapeAccumulator<IShape>()
     
     //adding list of rectangles to ShapeAccumulator
     val squareAccumulator = ShapeAccumulator(rectangles)
@@ -30,12 +30,13 @@ fun main(args : Array<String>){
     //adding list of different shapes to ShapeAccumulator
     val accumulatorAll = ShapeAccumulator(shapes)
     
-    //adding one figure to ShapeAccumulator
-    shapeAccumulator.add(rect2)
-    println(shapeAccumulator.toString())
+    //adding one figure to eAccumulator
+    accumulator.add(rect1)
+    accumulator.add(rect2)
+    println(accumulator.toString())
     
     //adding list of figures to ShapeAccumulator
-    shapeAccumulator.addAll(shapes)
+    accumulator.addAll(shapes)
     
     //calculating shapes with max/min area in [squareAccumulator]
     val biggestArea = squareAccumulator.getMaxAreaShape()
@@ -51,8 +52,8 @@ fun main(args : Array<String>){
     
     
     //calculating sum of areas/perimeters in [shapeAccumulator]
-    val totalArea = shapeAccumulator.getTotalArea()
-    val totalPerimeter = shapeAccumulator.getTotalPerimeter()
+    val totalArea = accumulator.getTotalArea()
+    val totalPerimeter = accumulator.getTotalPerimeter()
     println("\nTotal area: $totalArea")
     println("Total perimeter: $totalPerimeter")
     
