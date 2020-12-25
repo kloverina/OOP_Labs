@@ -6,15 +6,13 @@ class ShapeAccumulator<T: IShape> (){
     private val shapes = mutableListOf<T>()
     /**
     * @constructor that creates
-    * [ShapeAccumulator] with specified shape
-    * */
+    * [ShapeAccumulator] with specified shape */
     constructor(_shape: T) : this() {
         shapes.add(_shape)
     }
     /**
      * @constructor creates [ShapeAccumulator] that contains all [shapes] from some specified collection
-     * @throws IllegalArgumentException if collection is empty
-     * */
+     * @throws IllegalArgumentException if collection is empty */
     constructor(_shapes: Collection<T>) :this(){
         if(_shapes.isEmpty())
             throw IllegalArgumentException("Error! There are no elements in the collection!")
@@ -48,31 +46,43 @@ class ShapeAccumulator<T: IShape> (){
     
     /** @return shape with the highest area shape*/
     fun getMaxAreaShape(): T{
+        if (shapes.isEmpty())
+            throw IllegalArgumentException("Error! List of shapes is empty!")
        return shapes.maxBy { it.calcArea()}!!
     }
     
     /** @return shape with the lowest area shape*/
     fun getMinAreaShape(): T{
+        if (shapes.isEmpty())
+            throw IllegalArgumentException("Error! List of shapes is empty!")
         return shapes.minBy {  it.calcArea()}!!
     }
     
     /** @return shape with the highest perimeter*/
     fun getMaxPerimeter(): T{
-        return shapes.maxBy { it.calcPerimeter()}!!
+        if (shapes.isEmpty())
+            throw IllegalArgumentException("Error! List of shapes is empty!")
+        return shapes.maxBy{ it.calcPerimeter()}!!
     }
     
     /** @return shape with the lowest perimeter*/
     fun getMinPerimeter(): T{
-        return shapes.minBy {it.calcPerimeter()}!!
+        if (shapes.isEmpty())
+            throw IllegalArgumentException("Error! List of shapes is empty!")
+        return shapes.maxBy{it.calcPerimeter()}!!
     }
     
     /** @return sum of all area shapes*/
     fun getTotalArea():Double{
+        if (shapes.isEmpty())
+            throw IllegalArgumentException("Error! List of shapes is empty!")
         return shapes.sumByDouble { it.calcArea()}
     }
     
     /** @return sum of all perimeters*/
     fun getTotalPerimeter(): Double{
+        if (shapes.isEmpty())
+            throw IllegalArgumentException("Error! List of shapes is empty!")
         return shapes.sumByDouble { it.calcPerimeter()}
     }
 }

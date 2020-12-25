@@ -30,7 +30,7 @@ fun main(args : Array<String>){
     //adding list of different shapes to ShapeAccumulator
     val accumulatorAll = ShapeAccumulator(shapes)
     
-    //adding one figure to eAccumulator
+    //adding one figure to Accumulator
     accumulator.add(rect1)
     accumulator.add(rect2)
     println(accumulator.toString())
@@ -41,14 +41,14 @@ fun main(args : Array<String>){
     //calculating shapes with max/min area in [squareAccumulator]
     val biggestArea = squareAccumulator.getMaxAreaShape()
     val smallestArea = squareAccumulator.getMinAreaShape()
-    println("\nThe biggest area: ${biggestArea.calcArea()} - $biggestArea" )
-    println("The smallest area: ${smallestArea.calcArea()} - $smallestArea")
+    println("\nThe biggest area: ${biggestArea.calcArea()} - Figure: $biggestArea" )
+    println("The smallest area: ${smallestArea.calcArea()} - Figure: $smallestArea")
     
     //calculating shapes with max/min perimeter in [accumulatorAll]
     val biggestPerimeter = accumulatorAll.getMaxPerimeter()
     val smallestPerimeter = accumulatorAll.getMinPerimeter()
-    println("\nThe biggest perimeter: ${biggestPerimeter.calcPerimeter()} - $biggestPerimeter")
-    println("The smallest perimeter: ${smallestPerimeter.calcPerimeter()} - $smallestPerimeter")
+    println("\nThe biggest perimeter: ${biggestPerimeter.calcPerimeter()} - Figure: $biggestPerimeter")
+    println("The smallest perimeter: ${smallestPerimeter.calcPerimeter()} - Figure: $smallestPerimeter")
     
     
     //calculating sum of areas/perimeters in [shapeAccumulator]
